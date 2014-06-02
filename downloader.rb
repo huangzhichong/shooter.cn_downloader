@@ -49,7 +49,7 @@ class Downloader
     results = JSON.parse (RestClient.post @shooter_url,data).body  
     results.each do |r|
       r['Files'].each do |f|
-        if f['Ext'] == subte_format
+        if f['Ext'] == subtitle_format
           sub_name = (@movie_path.split(".")[0..-2]<<index<<'srt').join(".")
           search_result << {"file" => sub_name, "url" => f['Link'].gsub('https:/','http:/')}
           index += 1
@@ -73,5 +73,5 @@ class Downloader
 end
 
 
-path = "/Volumes/Macintosh HD/Movies/captain phillips.mkv"
+path = "/Users/huangsmart/Downloads/Non-Stop.2014.1080p.BluRay.X264-AMIABLE[rarbg]/Non-Stop.2014.1080p.BluRay.X264-AMIABLE.mkv"
 Downloader.new(path).download_subtitles
