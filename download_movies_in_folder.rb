@@ -2,9 +2,7 @@ require "digest/md5"
 require "rest-client"
 require "json"
 require 'open-uri'
-require 'open-uri'
-require 'pry'
-require 'pry-debugger'
+
 
 class Downloader
   def initialize(movie_path)
@@ -46,7 +44,6 @@ class Downloader
             "format" => "json",
             "lang"=>language}
 
-    binding.pry
     begin
       results = JSON.parse (RestClient.post @shooter_url,data).body
       raise "NO Subtitle for #{@movie_utf8_path}" if results.length == 0
